@@ -31,8 +31,7 @@ const sendMail = async () => {
 				clientId: CLIENT_ID,
 				clientSecret: CLIENT_SECRET,
 				refresh_token: CLIENT_TOKEN,
-				accessToken:
-					"ya29.a0ARrdaM-UoA8a9rP0V2A4XRqw0pQXHKIfw86M7lZa5W_dRGxk7yONdkWZQZ0Y2tuswoaD_FER2zx4j7-vECQNzcyx8N81PLKilGeIMi3is-KXbuU62lY2mIgwPe1REZO0yeLuvCfvM3YG8fzleoIyAfq9ZNGB",
+				accessToken: accessToken.token,
 			},
 		});
 
@@ -43,7 +42,6 @@ const sendMail = async () => {
 			text: "Are we ready for an Awesome experence????",
 			html: `<h2> This is just a simple test <a href="https://google.com" >Visit here!</a> </h2>`,
 		};
-
 		const result = transport.sendMail(mailOptions);
 		return result;
 	} catch (error) {
@@ -62,6 +60,7 @@ app.get("/send", (req, res) => {
 	sendMail()
 		.then((result) => console.log("Email has been sent", result))
 		.catch((err) => console.log(err.message));
+
 	res.json({ message: "This is the Home Page, let's do this!!!!" });
 });
 
